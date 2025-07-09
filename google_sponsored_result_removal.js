@@ -2,7 +2,7 @@
 // @name         Google Sponsored result removal
 // @namespace    http://tampermonkey.net/
 // @version      1.0.0
-// @description  Google Sponsored result removal from search
+// @description  Removing google sponsorship from search results
 // @author       Marcello Cavazza
 // @match        https://www.google.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=google.com
@@ -14,14 +14,14 @@
     var tries = 0;
     var loop = setInterval(() =>
       {
-        var sponsored = document.getElementById('taw');
-        if (sponsored != null)
-        {
-          sponsored.style.display = 'none';
-          clearInterval(loop);
-          return;
-        }
-        if (tries === 30)
+          var sponsored = document.getElementById('taw');
+          if (sponsored != null)
+          {
+            sponsored.style.display = 'none';
+            clearInterval(loop);
+            return;
+          }
+        if (tries == 30)
         {
             clearInterval(loop);
             return;
