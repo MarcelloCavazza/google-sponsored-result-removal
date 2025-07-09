@@ -11,16 +11,22 @@
 
 (function() {
     'use strict';
-    var timeout = 1;
-    setInterval(() =>
+    var tries = 0;
+    var loop = setInterval(() =>
       {
         var sponsored = document.getElementById('taw');
         if (sponsored != null)
         {
           sponsored.style.display = 'none';
+          clearInterval(loop);
+          return;
         }
-
-        timeout += 1000;
+        if (tries === 30)
+        {
+            clearInterval(loop);
+            return;
+        }
+        tries++;
       },
-    timeout);
+    1000);
 })();
